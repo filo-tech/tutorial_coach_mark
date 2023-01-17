@@ -251,6 +251,8 @@ class _MyHomePageState extends State<MyHomePage> {
         identify: "keyBottomNavigation1",
         keyTarget: keyBottomNavigation1,
         alignSkip: Alignment.topRight,
+        borderSide: BorderSide(color: Colors.blue, width: 2),
+        borderSidePadding: 20,
         contents: [
           TargetContent(
             align: ContentAlign.top,

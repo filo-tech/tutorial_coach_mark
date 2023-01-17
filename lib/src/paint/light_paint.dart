@@ -9,6 +9,7 @@ class LightPaint extends CustomPainter {
   final Color colorShadow;
   final double opacityShadow;
   final BorderSide? borderSide;
+  final double borderSidePadding;
 
   LightPaint(
     this.progress,
@@ -17,6 +18,7 @@ class LightPaint extends CustomPainter {
     this.colorShadow = Colors.black,
     this.opacityShadow = 0.8,
     this.borderSide,
+    this.borderSidePadding = 0,
   }) : assert(opacityShadow >= 0 && opacityShadow <= 1);
 
   @override
@@ -51,16 +53,17 @@ class LightPaint extends CustomPainter {
       ..lineTo(size.width, 0)
       ..close();
 
+    var justCircleHoleRadius = radius + borderSidePadding;
     final justCircleHole = Path()
-      ..moveTo(positioned.dx - radius, positioned.dy)
+      ..moveTo(positioned.dx - justCircleHoleRadius, positioned.dy)
       ..arcTo(
-        Rect.fromCircle(center: positioned, radius: radius),
+        Rect.fromCircle(center: positioned, radius: justCircleHoleRadius),
         pi,
         pi,
         false,
       )
       ..arcTo(
-        Rect.fromCircle(center: positioned, radius: radius),
+        Rect.fromCircle(center: positioned, radius: justCircleHoleRadius),
         0,
         pi,
         false,
